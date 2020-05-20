@@ -1,0 +1,12 @@
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  &__date {
+    color: #999999;
+    line-height: 15px;
+  }
+  &__comment {
+    margin-top: 7px;
+    word-break: break-word;
+  }
+}
