@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{Component,Fragment} from 'react'
 import ImageItem from "../image-item";
 import OuterLayer from "../outer-layer";
 import Spinner from "../spinner";
@@ -52,13 +52,21 @@ class App extends Component {
             ? <OuterLayer onToggleOuter={this.onToggleOuter} imageId={chosenImage}/>
             : null
 
+
         return (
-            <div className="image-gallery">
-                <h1 className="image-gallery__title">Test App</h1>
-                {loadingIndicator}
-                {content}
-                {outerLayer}
-            </div>
+            <Fragment>
+                <svg display="none">
+                    <symbol id="close-button" viewBox="0 0 413.348 413.348">
+                        <path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"/>
+                    </symbol>
+                </svg>
+                <div className="image-gallery">
+                    <h1 className="image-gallery__title">Test App</h1>
+                    {loadingIndicator}
+                    {content}
+                    {outerLayer}
+                </div>
+            </Fragment>
         )
     }
 

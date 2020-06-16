@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import './outer-layer.scss'
-import closeButton from  '../../images/close-button.png'
 import Spinner from "../spinner";
 import CommentItem from "../comment-item";
 import Form from "../form";
@@ -59,7 +58,7 @@ export default class OuterLayer extends Component {
 
         const { imageURL, comments } = this.state;
 
-        const image = imageURL ? <img src={imageURL}/> : <Spinner />;
+        const image = imageURL ? <img src={`${imageURL}.jpg`}/> : <Spinner />;
 
         const commentsToJSX = comments ? comments.map((itemComment) => {
             return <CommentItem itemComment={itemComment} key={Math.random()}/>
@@ -69,25 +68,26 @@ export default class OuterLayer extends Component {
             <div className="image-gallery__outerlayer outerlayer">
 
                 <div className="outerlayer__content">
-                    <div className="outerlayer__background" onClick={() => this.props.onToggleOuter()}></div>
+                    <div className="outerlayer__background" onClick={() => this.props.onToggleOuter()} />
                     <div className="outerlayer__inner">
-                        <img src={closeButton} className="outerlayer__close-button"
-                             onClick={() => this.props.onToggleOuter()}/>
-                        <div className="outerlayer__left outerlayer-left">
-                            <div className="outerlayer-left__image image-item">
-                                {image}
+                        <svg className="outerlayer__close-button" onClick={() => this.props.onToggleOuter()}>
+                            <use xlinkHref="#close-button"/>
+                        </svg>
+                        <div className="outerlayer__info-block">
+                            <div className="outerlayer__left outerlayer-left">
+                                <div className="outerlayer-left__image image-item">
+                                    {image}
+                                </div>
+                                <Form onAddComment={this.onAddComment}/>
                             </div>
-                            <Form onAddComment={this.onAddComment}/>
-                        </div>
-                        <div className="outerlayer__right outerlayer-right">
-                            <div className="outerlayer-right__comments">
-                                {commentsToJSX}
+                            <div className="outerlayer__right outerlayer-right">
+                                <div className="outerlayer-right__comments">
+                                    {commentsToJSX}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         )
 
