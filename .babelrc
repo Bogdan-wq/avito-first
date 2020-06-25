@@ -1,0 +1,11 @@
+{
+  "presets": [["@babel/env",{
+    "debug": true,
+    "targets": [
+      "last 5 opera versions",
+      "last 5 chrome versions",
+      "last 5 firefox versions"
+    ]
+  }],"@babel/react"],
+  "plugins": ["@babel/proposal-class-properties"]
+}
